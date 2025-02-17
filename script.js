@@ -57,4 +57,3 @@ while (Infinity) {
   if (humanSelection === "Exit") break;
   playRound(humanSelection, computerSelection);
 }
->>>>>>> 0da1c79 (Reinitialize the project after accidental deletion)
