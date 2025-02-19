@@ -9,6 +9,17 @@ function getComputerChoice() {
   else return 3;
 }
 
+// remove choice buttons
+function removeChoiceBtn() {
+  // this approach to select the buttons is not ideal, as it selects all of the
+  // buttons in the DOM, could've done better by being more specific
+  const container = document.querySelector("div.buttons");
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => {
+    container.removeChild(btn);
+  });
+}
+
 //get the input from the player 
 function getHumanChoice() {
   //let input = prompt("Enter your choice: rock, paper, or scissors. \nType exit to quit. \n(Note, the input is case insensitive)");
@@ -21,15 +32,43 @@ function getHumanChoice() {
   //else if (input === "paper") return 2;
   //else if (input === "scissors") return 3;
 
-  // generate the buttons for the choice 
   const container = document.querySelector("div.buttons");
+
+  // remove the playRound button
+  const playBtn = document.querySelector("button#play");
+  container.removeChild(playBtn);
+
+  // generate the buttons for the choice 
   const choices = ["rock", "paper", "scissors"];
 
   for (const choice of choices) {
     let choiceBtn = document.createElement(`button`);
+    choiceBtn.id = `${choice}`;
+    choiceBtn.textContent = `${choice}`;
     container.appendChild(choiceBtn);
-  }
 
+    // add event listener to this element
+    // to be noted that there is also a way by adding event listener to the
+    // parent node instead of each of the element
+    choiceBtn.addEventListener("click", () => {
+      // remove all the buttons again
+      removeChoiceBtn();
+
+      // readd the play button
+      container.appendChild(playBtn);
+
+      switch(choice) {
+        case "rock":
+          return 1;
+
+        case "paper":
+          return 2;
+
+        case "scissors":
+          return 3;
+      }
+    });
+  }
 }
 
 //variable to track the score of the human and the computer
