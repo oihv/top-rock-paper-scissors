@@ -11,15 +11,25 @@ function getComputerChoice() {
 
 //get the input from the player 
 function getHumanChoice() {
-  let input = prompt("Enter your choice: rock, paper, or scissors. \nType exit to quit. \n(Note, the input is case insensitive)");
+  //let input = prompt("Enter your choice: rock, paper, or scissors. \nType exit to quit. \n(Note, the input is case insensitive)");
+  //
+  //input = input.toLowerCase();
+  //
+  //if (input === "exit") return "Exit";
+  //
+  //if (input === "rock") return 1;
+  //else if (input === "paper") return 2;
+  //else if (input === "scissors") return 3;
 
-  input = input.toLowerCase();
+  // generate the buttons for the choice 
+  const container = document.querySelector("div.buttons");
+  const choices = ["rock", "paper", "scissors"];
 
-  if (input === "exit") return "Exit";
+  for (const choice of choices) {
+    let choiceBtn = document.createElement(`button`);
+    container.appendChild(choiceBtn);
+  }
 
-  if (input === "rock") return 1;
-  else if (input === "paper") return 2;
-  else if (input === "scissors") return 3;
 }
 
 //variable to track the score of the human and the computer

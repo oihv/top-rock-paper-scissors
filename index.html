@@ -8,22 +8,28 @@
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="style.css" </head>
 
-<body>
-    <div class="container">
-      <div class="score flex">
-        <div class="human">
-          <h2>Human</h2>
-          <h3>0</h3>
-        </div>
-        <div class="computer">
-          <h2>Computer</h2>
-          <h3>0</h3>
-        </div>
+<body class="flex">
+  <div class="container flex">
+    <div class="score flex">
+      <div id="humanScore">
+        <h2>Human</h2>
+        <h3>0</h3>
       </div>
-      <h1>Press 'Play Round' button to Start!</h1>
-      <div class ="buttons">
-        <button id="play">Play Round</button>
+      <div id="computerScore">
+        <h2>Computer</h2>
+        <h3>0</h3>
       </div>
+    </div>
+    <div class="dashboard">
+      <h1>Welcome to TOP Rock Paper Scissor's Mini Game!</h1>
+        <h2>Press 'Play Round' button to Start!</h2>
+    </div>
+    <div class="buttons flex">
+      <button id="play">Play Round</button>
+      <!--<button id="rock">Rock</button>-->
+      <!--<button id="paper">Paper</button>-->
+      <!--<button id="scissors">Scissors</button>-->
+    </div>
   </div>
 </body>
 

@@ -14,22 +14,18 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 250px 100px;
 }
 
 .flex {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
   flex-grow: 1;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 
   height: 100%;
@@ -44,6 +40,7 @@ body {
 }
 
 h3, h2 {
+  margin: 0 50px;
   text-align: center;
   border-width: 2px;
   border-color: Black;
@@ -54,8 +51,18 @@ h1 {
   flex-basis: 100%;
   height: 50%;
   margin: 0;
+  padding: 40px 0;
 }
 
 .buttons {
-  height: 30%
+  height: 30%;
+  flex-basis: 100%;
+  gap: 30px;
+}
+
+button {
+  background-color: Cyan;
+  border-width: 0px;
+  height: 60%;
+  width: 180px;
 }
