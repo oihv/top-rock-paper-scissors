@@ -50,10 +50,11 @@ function playRound(humanChoice, computerChoice) {
 }
 
 //start the game loop
-while (Infinity) {
+const startBtn = document.querySelector("button");
+
+startBtn.addEventListener("click", () => {
   let computerSelection = getComputerChoice();
   let humanSelection = getHumanChoice();
 
-  if (humanSelection === "Exit") break;
   playRound(humanSelection, computerSelection);
-}
+});
