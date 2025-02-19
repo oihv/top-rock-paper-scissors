@@ -21,7 +21,7 @@ function removeChoiceBtn() {
 }
 
 //get the input from the player 
-function getHumanChoice() {
+function getHumanChoice(computerSelection) {
   //let input = prompt("Enter your choice: rock, paper, or scissors. \nType exit to quit. \n(Note, the input is case insensitive)");
   //
   //input = input.toLowerCase();
@@ -57,15 +57,15 @@ function getHumanChoice() {
       // readd the play button
       container.appendChild(playBtn);
 
-      switch(choice) {
+      switch (choice) {
         case "rock":
-          return 1;
+          return playRound(1, computerSelection);
 
         case "paper":
-          return 2;
+          return playRound(2, computerSelection);
 
         case "scissors":
-          return 3;
+          return playRound(3, computerSelection);
       }
     });
   }
@@ -103,7 +103,5 @@ const startBtn = document.querySelector("button");
 
 startBtn.addEventListener("click", () => {
   let computerSelection = getComputerChoice();
-  let humanSelection = getHumanChoice();
-
-  playRound(humanSelection, computerSelection);
+  let humanSelection = getHumanChoice(computerSelection);
 });
