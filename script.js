@@ -35,6 +35,10 @@ function updateHero(status){
   const subhero = document.querySelector("#subhero");
 
   switch (status) {
+    case "pending":
+      hero.textContent = "Make your choice!";
+      break;
+
     case "win":
       hero.textContent = "You Win! You earn 1 point!";
       break;
@@ -49,6 +53,10 @@ function updateHero(status){
   }
 
   subhero.textContent = "Press 'Play Round' to start the next round!";
+  
+  if (status === "pending") {
+    subhero.textContent = "Click the button to choose.";
+  }
 }
 
 //get the input from the player 
@@ -148,6 +156,8 @@ function playRound(humanChoice, computerChoice) {
 const startBtn = document.querySelector("button");
 
 startBtn.addEventListener("click", () => {
+  updateHero("pending");
+
   let computerSelection = getComputerChoice();
   let humanSelection = getHumanChoice(computerSelection);
 });
