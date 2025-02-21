@@ -20,6 +20,15 @@ function removeChoiceBtn() {
   });
 }
 
+// update score
+function updateScore(humanScore, computerScore) {
+  const humanScoreText = document.querySelector("#humanScoreText");
+  const computerScoreText = document.querySelector("#computerScoreText");
+  
+  humanScoreText.textContent = `${humanScore}`;
+  computerScoreText.textContent = `${computerScore}`;
+}
+
 //get the input from the player 
 function getHumanChoice(computerSelection) {
   //let input = prompt("Enter your choice: rock, paper, or scissors. \nType exit to quit. \n(Note, the input is case insensitive)");
@@ -96,6 +105,7 @@ function playRound(humanChoice, computerChoice) {
   }
 
   console.info(`Your score: ${humanScore}, the computer score: ${computerScore}.`);
+  updateScore(humanScore, computerScore);
 }
 
 //start the game loop
