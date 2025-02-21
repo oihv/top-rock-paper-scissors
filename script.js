@@ -21,12 +21,34 @@ function removeChoiceBtn() {
 }
 
 // update score
-function updateScore(humanScore, computerScore) {
+function updateScore(humanScore, computerScore, humanGain, computerGain) {
   const humanScoreText = document.querySelector("#humanScoreText");
   const computerScoreText = document.querySelector("#computerScoreText");
   
-  humanScoreText.textContent = `${humanScore}`;
-  computerScoreText.textContent = `${computerScore}`;
+  humanScoreText.textContent = `${humanScore}(+${humanGain})`;
+  computerScoreText.textContent = `${computerScore}(+${computerGain})`;
+}
+
+// update hero text
+function updateHero(status){
+  const hero = document.querySelector("#hero");
+  const subhero = document.querySelector("#subhero");
+
+  switch (status) {
+    case "win":
+      hero.textContent = "You Win! You earn 1 point!";
+      break;
+
+    case "lose":
+      hero.textContent = "You Lose! The computer earn 1 point!";
+      break;
+
+    case "draw":
+      hero.textContent = "It's a draw! Both you and the computer earn 0.5 point.";
+      break;
+  }
+
+  subhero.textContent = "Press 'Play Round' to start the next round!";
 }
 
 //get the input from the player 
@@ -90,22 +112,36 @@ let computerScore = 0;
 //paper - rock, paper - paper, paper - scissors
 //scissors - rock, scissors - paper, scissors - scissors
 function playRound(humanChoice, computerChoice) {
+  const DRAW_SCORE = 0.5;
+  const WIN_SCORE = 1;
+
+  var humanGain = 0;
+  var computerGain = 0;
+
   if (humanChoice == computerChoice) {
-    humanScore += 0.5;
-    computerScore += 0.5;
+    humanGain = DRAW_SCORE;
+    computerGain = DRAW_SCORE;
+    humanScore += humanGain;
+    computerScore += computerGain;
+
     console.log("Draw! both get 0.5 points");
+    updateHero("draw");
   }
   else if ((humanChoice == 1 && computerChoice == 3) || (humanChoice == 2 && computerChoice == 1) || (humanChoice == 3 && computerChoice == 2)) {
-    humanScore += 1;
+    humanGain = WIN_SCORE;
+    humanScore += humanGain;
     console.log(`You win! ${choices[humanChoice]} beats ${choices[computerChoice]}. You earn 1 point!`);
+    updateHero("win");
   }
   else if ((humanChoice == 1 && computerChoice == 2) || (humanChoice == 2 && computerChoice == 3) || (humanChoice == 3 && computerChoice == 1)) {
-    computerScore += 1;
+    computerGain = WIN_SCORE;
+    computerScore += computerGain;
     console.log(`Computer win! ${choices[computerChoice]} beats ${choices[humanChoice]}. It earn 1 point!`);
+    updateHero("lose");
   }
 
   console.info(`Your score: ${humanScore}, the computer score: ${computerScore}.`);
-  updateScore(humanScore, computerScore);
+  updateScore(humanScore, computerScore, humanGain, computerGain);
 }
 
 //start the game loop
